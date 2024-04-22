@@ -1,38 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web App using Spring MVC, Spring Data JPA, Thymeleaf</title>
-    <link rel="stylesheet" href="screenshots/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Web App using Spring MVC, Spring Data JPA, Thymeleaf</h1>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h3 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+    </style>
 
-        <h3>Partie 1 :</h3>
 
-        <p>Créer une application Web JEE basée sur Spring MVC, Thymeleaf et Spring Data JPA qui permet de gérer les patients. L'application doit permettre les fonctionnalités suivantes :</p>
-        <ul>
-            <li>Afficher les patients</li>
-            <li>Faire la pagination</li>
-        </ul>
-        
-        <h4>Chercher les patients :</h4>
-        <img src="screenshots/img_1.png" alt="">
+<h1>Web App using Spring MVC Spring Data JPA Thymeleaf</h1>
 
-        <h4>Supprimer un patient :</h4>
-        <img src="screenshots/img_2.png" alt="">
 
-        <h4>Ajouter un patient :</h4>
-        <div style="text-align: center;">
-            <img src="screenshots/img_4.png" alt="" style="max-width: 300px;">
-            <img src="screenshots/img_5.png" alt="" style="max-width: 300px;">
-            <img src="screenshots/img_6.png" alt="" style="max-width: 300px;">
-        </div>
+<h3>Partie 1 :</h3>
 
-        <h4>Modifier un patient :</h4>
-        <img src="screenshots/img_7.png" alt="">
-    </div>
-</body>
-</html>
+<p>Créer une application Web JEE basée sur Spring MVC, Thylemeaf et Spring Data JPA qui permet de gérer les patients. 
+L'application doit permettre les fonctionnalités suivantes : <br>
+Afficher les patients <br>
+Faire la pagination  <br>
+</p>
+
+<img src="screenshots/img.png" alt="">
+
+<p>Chercher les patients :</p>
+<img src="screenshots/img_1.png" alt="">
+
+<p>Supprimer un patient :</p>
+<img src="screenshots/img_2.png" alt="">
+
+<p>Ajouter un patient :</p>
+<img src="screenshots/img_4.png" alt="">
+<img src="screenshots/img_5.png" alt="">
+<img src="screenshots/img_6.png" alt="">
+
+<p>Modifier  un patient :</p>
+<img src="screenshots/img_7.png" alt="">
+
+
+
