@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PatientRepository  extends JpaRepository<Patient,Long> {
 
-
+    //chercher un patient  avec pageable : pour transferer num de page et size de page
+    //containt : son equivalent c est like ds SQL
     Page<Patient> findByNomContains(String keyword,Pageable pageable);
 }

@@ -2,6 +2,7 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="template1" >
+<!--Layout decorate : pour annoncer qd on va utiliser template1-->
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,21 +10,23 @@
     <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
-<div layout:fragment="content1">
+
+<!--chercher content1 ds template1 et ajouter ce contenu ds content1-->
+<div layout:fragment="content1" class="m-4">
    <div class="container mt-2">
-       <div class="card">
-           <div class="card-header">Liste Patients</div>
-               <div class="card-body">
-                   <form method="get" th:action="@{index}">
+       <div class="card ">
+           <div class="card-header ">Liste Patients</div>
+               <div class="card-body m-3">
+                   <!-- Form pour chercher un patient :-->
+                   <form method="get" th:action="@{index}"> <!-- @mappping vers /index -->
                         <div>
-                            <label >KeyWord :</label>
-                            <input type="text" name="keyword" th:value="${keyword}">
+                            <label >Key-word :</label>
+                            <input type="text" name="keyword" th:value="${keyword}" >
+                            <!-- th:value pour afficher keyword passer on parametre -->
                             <button type="submit" class="btn btn-info">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
-
-
                    </form>
                            <table class="table active-table-tab">
                                <thead>
@@ -42,7 +45,11 @@
                                    <td>
                                        <a onclick="javascript:return confirm('Etes vous sure ?')" th:href="@{delete(id=${p.id},keyword=${keyword},page=${currentPage})}" class="btn btn-danger">
                                            <i class="bi bi-trash"></i>
-
+                                       </a>
+                                   </td>
+                                   <td>
+                                       <a  th:href="@{edit(id=${p.id},keyword=${keyword},page=${currentPage})}" class="btn btn-success">
+                                           <i class="bi bi-pencil-square"></i>
                                        </a>
                                    </td>
                                </tr>
@@ -51,12 +58,18 @@
                            </table>
 
                    <ul class="nav nav-pills">
-                       <li th:each="page,status:${pages}">
-                           <a th:href="@{/index(page=${status.index},keyword=${keyword})}"
-                              th:class="${currentPage==status.index?'btn btn-info ms-1':'btn btn-outline-info ms-1'}"
-                               th:text="${1+status.index}">  </a>
+                       <li th:each="valuePage,item:${pages}"> <!--// pages representes c est tab contient nb-->
+<!--                           //total de pages , et status.index represenente les indexes des  cases de tab-->
+
+<!--                           // th:href : fait appel a @getmapping dans url /index , c est pour ca on a utiliser @ et non pas $-->
+<!--                           //avec page = status.index -->
+                           <a th:href="@{/index(page=${item.index},keyword=${keyword})}"
+
+                              th:class="${currentPage==item.index?'btn btn-info ms-1':'btn btn-outline-info ms-1'}"
+                               th:text="${1+item.index}">  </a>
 
                        </li>
+<!--  //chnager la couleur de page courant par un if currentPage==status.index changer le class -->
                    </ul>
                </div>
        </div>
