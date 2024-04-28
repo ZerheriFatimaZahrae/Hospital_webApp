@@ -8,6 +8,7 @@ import ma.enset.tp_spring.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +24,7 @@ public class PatientController {
 
     @Autowired
     private PatientRepository patientRepository;
-    @GetMapping("/index")
+    @GetMapping("/user/index")
     //@RequestParam : seginifier va chercher un att son nom est page dans url et l affected son valeur  a attr page
     public String index(Model model, @RequestParam (name = "page",defaultValue = "0") int page
             ,@RequestParam (name = "size",defaultValue = "4") int size
@@ -36,15 +37,17 @@ public class PatientController {
         model.addAttribute("keyword", kw);
         return "patients";
     }
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String delete(Long id,
                          @RequestParam (name = "keyword",defaultValue = "") String keyword,
                          @RequestParam (name = "page",defaultValue = "0") int page){
         patientRepository.deleteById(id);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/admin/edit")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String edit(Long id ,
                        Model model,
                          String keyword,
@@ -61,20 +64,22 @@ public class PatientController {
 
     @GetMapping("/")
     public String home(){
-        return "redirect:/index";
+        return "redirect:/user/index";
     }
-    @GetMapping("/patients")
+    @GetMapping("/user/patients")
     public List<Patient> listPatient(){
         return patientRepository.findAll();
     }
 
-    @GetMapping("/formPatients")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/admin/formPatients")
     public String formPatient(Model model){
         model.addAttribute("patient",new Patient());
         return "formPatients";
     }
 
-    @PostMapping(path = "/save")
+    @PostMapping(path = "/admin/save") //authoriser l'acces qui les users ayant l role admin
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     //@valid : annoncer qd doit verifier les attrs de patient
     public String save(Model model ,
                        @Valid Patient patient ,
@@ -83,7 +88,7 @@ public class PatientController {
                         ,@RequestParam (name = "keyword",defaultValue = "") String kw){
         if (bindingResult.hasErrors()) return "formPatients";
         patientRepository.save(patient);
-        return "redirect:/index?page="+page+"&keyword="+kw;
+        return "redirect:/user/index?page="+page+"&keyword="+kw;
     }
 
 }
