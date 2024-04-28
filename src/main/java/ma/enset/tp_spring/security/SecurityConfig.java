@@ -59,7 +59,8 @@ public class SecurityConfig{
         httpSecurity.authorizeHttpRequests().anyRequest().authenticated();
         httpSecurity.exceptionHandling().accessDeniedPage("/notAuthorized");
         httpSecurity.userDetailsService(userDetailsServiceImp);
-        //une fois l utilisateur saisi son username et son password fait appel a fct userDetailsServiceImp
+        // Une fois que l'utilisateur a saisi son nom d'utilisateur et son mot de passe,
+        // faites appel à la fonction userDetailsServiceImp.
         return httpSecurity.build();
     }
 }

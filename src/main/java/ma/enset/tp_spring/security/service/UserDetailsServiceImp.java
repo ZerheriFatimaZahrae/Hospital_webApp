@@ -18,7 +18,8 @@ public class UserDetailsServiceImp implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser= accountService.loadUserByUsername(username);
         String[]  roles=appUser.getRoles().stream().map(u->u.getRole()).toArray(String[]::new);
-        if (appUser == null) throw new UsernameNotFoundException(String.format("User %s not found", username));
+        if (appUser == null) throw new UsernameNotFoundException(String.format("User %s not" +
+                " found", username));
 
         UserDetails userDetails = User.withUsername(appUser.getUsername())
                 .password(appUser.getPassword())

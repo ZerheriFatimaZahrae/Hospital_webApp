@@ -27,6 +27,30 @@ Faire la pagination  <br>
 
 <p>Modifier  un patient :</p>
 <img src="screenshots/img_7.png" alt="">
+<p>
+Partie 3 : Sécurité avec Spring security  : <br>
+InMemomy Authentication: 
+</p>
+<img src="screenshots/img_8.png" alt="">
+<p>JDBC Authentication :</p>
+<img src="screenshots/img_9.png" alt="">
+<img src="screenshots/img_10.png" alt="">
+<img src="screenshots/img_11.png" alt="">
+<img src="screenshots/img_12.png" alt="">
+<p>UserDetails Service :</p>
+<img src="screenshots/img_13.png" alt="">
+<img src="screenshots/img_14.png" alt="">
+<img src="screenshots/img_15.png" alt="">
+<img src="screenshots/img_16.png" alt="">
+<img src="screenshots/img_17.png" alt="">
+<img src="screenshots/img_18.png" alt="">
+
+
+
+
+
+
+
 
 
 
