@@ -1,7 +1,7 @@
 
 
 
-<h1>Web App using Spring MVC Spring Data JPA Thymeleaf</h1>
+<h1>Web App using Spring MVC Spring Data JPA Thymeleaf Spring Security</h1>
 
 
 <h3>Partie 1 :</h3>
